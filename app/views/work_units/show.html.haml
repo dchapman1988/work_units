@@ -1,0 +1,11 @@
+%h2= "Work Unit #{@work_unit.try(:id)}"
+%p
+  %b Description:
+  = @work_unit.try(:description)
+%br/
+%div{:style => "float: left; width: auto;"}
+  = button_to "Edit", edit_work_unit_path(@work_unit), :method => :get
+= button_to "Delete", @work_unit, :method => :delete, :confirm => "You sure?", :title => "Deleting Work Unit #{@work_unit.try(:id)}"
+%br/
+%p
+  = link_to "Back to Work Units", work_units_path

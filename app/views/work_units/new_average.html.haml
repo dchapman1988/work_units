@@ -1,0 +1,16 @@
+%h2 Select the dates you want to average
+
+= form_tag average_work_units_path do
+  %div{:style => "float: left; width: 300px;"}
+    = label_tag(:start_date, "Start Date")
+    %br/
+    = date_select("start_date", :create_at)
+  = label_tag(:end_date, "End Date")
+  %br/
+  = date_select("end_date", :created_at)
+  %br/
+  %br/
+  %br/
+  %div{:style => "float: left; width: auto;"}
+    = submit_tag "Submit"
+= button_to "Cancel", work_units_path, :method => :get

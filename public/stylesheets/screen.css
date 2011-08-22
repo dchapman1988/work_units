@@ -1,0 +1,60 @@
+html {
+}
+
+body {
+}
+
+#wrapper {
+  width:960px;
+  margin: 20px auto;
+  border:1px solid #ccc;
+}
+
+h1 {
+  font-size:1.4em;
+}
+
+h1 a {
+  text-decoration:none;
+  color:#daf1f9;
+}
+
+
+#content table {
+  width:100%;
+}
+
+#content table th {
+  border-right:1px solid #ccc;
+  padding: 4px;
+  font-weight:bold;
+  background:#00929f;
+  color:#000;
+}
+
+#content table .last {
+  border:none;
+}
+
+#content table tr {
+  border-top:1px solid #ccc;
+}
+
+#content table td a {
+  color:#2b516c;
+}
+
+#content table tr.even {
+  background:#fff;
+}
+#content table tr.odd {
+  background:#daf1f9;
+}
+
+
+#content table td {
+  border-right:1px solid #ccc;
+  padding: 4px 3px 4px 3px;
+}
+
+

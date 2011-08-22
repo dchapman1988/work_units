@@ -1,0 +1,39 @@
+%h2 Work Units
+
+%p
+  %div{:style => "float: left; width: auto;"}
+    = button_to 'Add Work Unit', new_work_unit_path, :method => :get
+  = button_to 'Custom Average', new_average_work_units_path, :method => :get
+
+%h3 This month you have:
+%ul
+  %li
+    Averaged
+    %b= pluralize(@average_per_day_this_month, 'work unit')
+    a day.
+  %li
+    Worked
+    %b= @worked_days
+    out of
+    %b= @days_in_month
+    days.
+  %li
+    Logged
+    %b= pluralize(@work_units_this_month, 'work unit')
+    total.
+
+%table.work_units
+  %thead
+    %tr
+      %th Description
+      %th Number of Units
+      %th Date Added
+  %tbody
+    - @work_units.each do |unit|
+      %tr{ :class => cycle('odd', 'even') }
+        %td
+          = link_to unit.try(:description), work_unit_path(unit)
+        %td
+          = unit.try(:number_of_units)
+        %td.last
+          = unit.try(:created_at).to_date

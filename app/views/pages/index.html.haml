@@ -1,0 +1,21 @@
+%h2 Welcome to the Work Units Application
+
+%p
+  = "This application was created by"
+  = link_to "David A. Chapman", "http://www.dchapman.org/"
+
+%br/
+
+%p
+  %b= "Today's date:"
+  = Date.current
+%br/
+
+%p
+  = "The purpose of this application is to provide employed individuals (who get paid"
+  = "per work unit) with a free application that averages the number of work units"
+  = "they complete per day in a given month. If this sounds familiar, then feel free to"
+  = "create an account and get started adding your work units for this month!"
+  = "Also feel free to"
+  = mail_to "david@isotope11.com", "contact the developer", :encode => "javascript"
+  = "if you need any web development or other programming work done."

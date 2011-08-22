@@ -1,0 +1,24 @@
+%h2 Average
+
+%p
+  %div{:style => "float: left; width: auto;"}
+    = button_to "Do Another Average", new_average_work_units_path, :method => :get
+  = button_to "Back to Work Units", work_units_path, :method => :get
+
+%h3= "Between #{@start_date} and #{@end_date} you have:"
+%ul
+  %li
+    Averaged
+    %b= pluralize(@average, 'work unit')
+    a day.
+  %li
+    Worked
+    %b= @days_worked
+    out of
+    %b= pluralize(@day_diff, 'day')
+    total.
+  %li
+    Logged
+    %b= pluralize(@work_units, 'work unit')
+    total.
+
