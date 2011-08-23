@@ -38,10 +38,13 @@ class ApplicationController < ActionController::Base
     units = current_user.work_units.all(:order      => 'DATE(created_at) DESC',
                                         :group      => ["DATE(created_at)"],
                                         :conditions => ["created_at BETWEEN ? AND ?", start_date, end_date])
-    units.each do |u|
-      unit_count = unit_count + u.try(:number_of_units).to_i
+    n = []
+    if units
+      units.each do |u|
+        n << u.number_of_units
+      end
     end
-    unit_count
+    n.sum
   end
 
   def total_days_worked_custom(start_date, end_date)
