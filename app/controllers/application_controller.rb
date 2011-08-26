@@ -7,13 +7,17 @@ class ApplicationController < ActionController::Base
     units = current_user.work_units.all(:order      => 'DATE(created_at) DESC',
                                         :group      => ["DATE(created_at)"],
                                         :conditions => ["created_at BETWEEN ? AND ?", start_date, end_date])
-    n = []
+    unit_array = []
+    sum = 0
     if units
       units.each do |u|
-        n << u.number_of_units
+        unit_array << u.number_of_units
       end
     end
-    n.sum
+    unit_array.each do |n|
+      sum = sum + n
+    end
+    sum
   end
 
   def days_worked_this_month
@@ -38,10 +42,17 @@ class ApplicationController < ActionController::Base
     units = current_user.work_units.all(:order      => 'DATE(created_at) DESC',
                                         :group      => ["DATE(created_at)"],
                                         :conditions => ["created_at BETWEEN ? AND ?", start_date, end_date])
-    units.each do |u|
-      unit_count = unit_count + u.try(:number_of_units).to_i
+    unit_array = []
+    sum = 0
+    if units
+      units.each do |u|
+        unit_array << u.number_of_units
+      end
     end
-    unit_count
+    unit_array.each do |n|
+      sum = sum + n
+    end
+    sum
   end
 
   def total_days_worked_custom(start_date, end_date)

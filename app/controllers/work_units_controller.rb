@@ -6,7 +6,7 @@ class WorkUnitsController < ApplicationController
     @start_date  = params[:start_date].to_a.map{ |e| e[1] }.join("-").to_date
     @end_date    = params[:end_date].to_a.map{|e| e[1] }.join("-").to_date
     @work_units  = total_work_units_custom(@start_date, @end_date)
-    @days_worked = total_days_worked_custom(@start_date, @end_date)
+    @days_worked = total_days_worked_custom(@start_date, @end_date) + 1
     @day_diff    = ((@end_date.to_time(:utc) - @start_date.to_time(:utc)) / (24*60*60) + 1).to_i
     @average = begin
       (@work_units / @days_worked)
@@ -20,7 +20,7 @@ class WorkUnitsController < ApplicationController
 
   def index
     @average_per_day_this_month = average_work_units_current_month
-    @worked_days = days_worked_this_month
+    @worked_days = days_worked_this_month + 1
     @work_units_this_month = total_work_units_this_month
     @days_in_month = (Date.new(Time.now.year, 12, 31).to_date << (12-Date.current.month)).day
     if current_user

@@ -25,15 +25,18 @@
 %table.work_units
   %thead
     %tr
-      %th Description
-      %th Number of Units
       %th Date Added
+      %th Number of Units
+      %th Description
   %tbody
     - @work_units.each do |unit|
       %tr{ :class => cycle('odd', 'even') }
         %td
-          = link_to unit.try(:description), work_unit_path(unit)
+          = link_to unit.try(:created_at).to_date, work_unit_path(unit)
         %td
           = unit.try(:number_of_units)
-        %td.last
-          = unit.try(:created_at).to_date
+        %td
+          - if unit.description != '' || unit.description != nil
+            = unit.description
+          - else
+            = "N/A"
